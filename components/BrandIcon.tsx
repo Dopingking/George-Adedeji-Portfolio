@@ -1,6 +1,6 @@
 import type { IconType } from "react-icons";
 import {
-  SiCss3,
+  SiCss,
   SiGithub,
   SiHtml5,
   SiNextdotjs,
@@ -20,7 +20,7 @@ const icons: Record<string, IconType> = {
   typescript: SiTypescript,
   tailwind: SiTailwindcss,
   html: SiHtml5,
-  css: SiCss3,
+  css: SiCss,
   supabase: SiSupabase,
   github: SiGithub,
   vercel: SiVercel,
