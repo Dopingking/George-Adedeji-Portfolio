@@ -1,0 +1,215 @@
+@import "tailwindcss";
+
+/* ───────────────────────────────────────────────
+   Satoshi (Fontshare — https://www.fontshare.com/fonts/satoshi)
+   Download the family and drop these files in public/fonts/:
+     Satoshi-Variable.woff2   (variable, 300–900)
+     Satoshi-Variable.woff    (optional legacy fallback)
+   Nothing else in the site needs changing.
+   ─────────────────────────────────────────────── */
+@font-face {
+  font-family: "Satoshi";
+  src:
+    url("/fonts/Satoshi-Variable.woff2") format("woff2-variations"),
+    url("/fonts/Satoshi-Variable.woff") format("woff-variations");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans:
+    "Satoshi", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+    sans-serif;
+
+  --color-canvas: #f8f7f3;
+  --color-canvas-deep: #f2f0ea;
+  --color-paper: #ffffff;
+  --color-ink: #151515;
+  --color-ink-soft: #4b4b4b;
+  --color-ink-muted: #7a7873;
+  --color-line: #e5e2d9;
+  --color-accent: #2457ff;
+  --color-accent-soft: #eaefff;
+  --color-coral: #ff695f;
+  --color-amber: #f3b94f;
+  --color-sage: #66b89a;
+
+  --radius-card: 18px;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  img,
+  svg,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@layer components {
+  .shell {
+    width: 100%;
+    max-width: 78rem;
+    margin-inline: auto;
+    padding-inline: clamp(1.15rem, 4vw, 3.5rem);
+  }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+  }
+
+  .paper-grain {
+    background-image:
+      radial-gradient(circle at 18% 12%, rgba(243, 185, 79, 0.05), transparent 45%),
+      radial-gradient(circle at 82% 8%, rgba(36, 87, 255, 0.045), transparent 40%);
+  }
+}
+
+/* ───────────── motion ───────────── */
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes marquee-slide {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0);
+  }
+}
+
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+
+@keyframes node-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+.rise {
+  opacity: 0;
+}
+
+.rise[data-visible="true"] {
+  animation: rise 0.75s var(--ease-out-soft) forwards;
+}
+
+.marquee-track {
+  animation: marquee-slide 42s linear infinite;
+  will-change: transform;
+}
+
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+
+.artwork-drift {
+  animation: drift 16s ease-in-out infinite;
+}
+
+.flow-line {
+  stroke-dasharray: 5 9;
+  animation: dash-flow 1.4s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .rise {
+    opacity: 1;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
+}
