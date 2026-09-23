@@ -8,8 +8,6 @@ import {
   Check,
   Code2,
   ExternalLink,
-  Github,
-  Linkedin,
   Mail,
   Menu,
   MoveUpRight,
@@ -339,8 +337,8 @@ export default function Portfolio() {
         <aside className="direct-links reveal">
           <span>OR REACH ME DIRECTLY</span>
           <a href="mailto:georgeadedeji.dev@gmail.com"><Mail size={17} /> Email</a>
-          <a href="https://github.com/Dopingking" target="_blank" rel="noreferrer"><Github size={17} /> GitHub</a>
-          <a href="https://www.linkedin.com/in/george-adedeji/" target="_blank" rel="noreferrer"><Linkedin size={17} /> LinkedIn</a>
+         <a href="https://github.com/Dopingking" target="_blank" rel="noreferrer"><BrandIcon name="github" size={17} /> GitHub</a>
+          <a href="https://www.linkedin.com/in/george-adedeji/" target="_blank" rel="noreferrer"><BrandIcon name="linkedin" size={17} /> LinkedIn</a>
           <a href="https://x.com/Dopingking" target="_blank" rel="noreferrer"><X size={17} /> X / Twitter</a>
           <a href="https://wa.me/2348142456709" target="_blank" rel="noreferrer"><BrandIcon name="whatsapp" size={17} /> WhatsApp</a>
         </aside>

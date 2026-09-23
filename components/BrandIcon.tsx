@@ -4,7 +4,7 @@ import {
   SiGithub,
   SiHtml5,
   SiNextdotjs,
-  SiN8n,
+  SiN8N,
   SiReact,
   SiSupabase,
   SiTailwindcss,
@@ -16,7 +16,7 @@ import {
 const icons: Record<string, IconType> = {
   react: SiReact,
   next: SiNextdotjs,
-  n8n: SiN8n,
+  n8n: SiN8N,
   typescript: SiTypescript,
   tailwind: SiTailwindcss,
   html: SiHtml5,
